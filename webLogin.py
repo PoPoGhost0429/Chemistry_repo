@@ -106,7 +106,6 @@ class WEB:
         if 'SEARCH_OK' in self.tags:
             SEARCH_OK = self.chrome.find_element(By.XPATH, self.tags["SEARCH_OK"])
             SEARCH_OK.click()
-        sleep(5)
         medInfo = self.get_prodData()
         if self.tags["DEBUG"]==0:
             self.chrome.close()
@@ -125,6 +124,7 @@ class WEB:
         return code
         
     def get_prodData(self):
+        self.chrome.implicitly_wait(0)
         medInfo = []
         itemPrice = 0
         itemID = ""
